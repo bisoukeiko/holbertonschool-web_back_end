@@ -1,8 +1,7 @@
 export default function getListStudentIds(arrStudents) {
-  let newArr = [];
-  if (typeof arrStudents === 'object') {
-    newArr = arrStudents.map((object) => object.id);
+  if (arrStudents instanceof Array) {
+    return arrStudents.map((object) => object.id);
   }
 
-  return newArr;
+  return [];
 }
