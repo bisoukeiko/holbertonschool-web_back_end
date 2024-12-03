@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+""" task05: Complex types - list of floats """
+
 
 def sum_list(input_list: list[float]) -> float:
     """  takes a list input_list of floats as argument and
