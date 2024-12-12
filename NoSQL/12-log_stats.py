@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-""" task12: Log stats
-    provides some stats about Nginx logs stored in MongoDB
-"""
+""" task12: Log stats """
 from pymongo import MongoClient
 
-if __name__ == "__main__":
+
+def log_stats():
+    """ provides some stats about Nginx logs stored in MongoDB """
     client = MongoClient("mongodb://127.0.0.1:27017")
     logs_collection = client.logs.nginx
 
@@ -18,5 +18,10 @@ if __name__ == "__main__":
         cnt_method = logs_collection.count_documents({"method": method})
         print("\tmethod {}: {}".format(method, cnt_method))
 
-    cnt_status = logs_collection.count_documents({"method": "GET", "path": "/status"})
+    cnt_status = logs_collection.count_documents({"method": "GET",
+                                                  "path": "/status"})
     print("{} status check".format(cnt_status))
+
+
+if __name__ == "__main__":
+    log_stats()
