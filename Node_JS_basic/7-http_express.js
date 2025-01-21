@@ -5,15 +5,22 @@ const app = express();
 const PORT = 1245;
 
 app.get('/', (req, res) => {
-  res.send(200, 'Hello Holberton School!');
+  res.send('Hello Holberton School!');
 });
 
 app.get('/students', (req, res) => {
-  countStudents(process.argv[2]).then((studentslist) => {
-    res.send(200, `This is the list of our students\n${studentslist.join('\n')}`);
-  }).catch((err) => {
-    res.send(500, err.message);
-  });
+  const databaseFile = process.argv[2]; // ファイルパスは引数から取得
+  if (!databaseFile) {
+    res.status(500).send('Database file path is missing');
+    return;
+  }
+
+  countStudents(databaseFile)
+    .then((studentslist) => {
+      res.send(200, `This is the list of our students\n${studentslist.join('\n')}`);
+    }).catch((err) => {
+      res.send(500, err.message);
+    });
 });
 
 app.listen(PORT, () => {
