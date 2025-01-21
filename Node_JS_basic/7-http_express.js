@@ -16,8 +16,6 @@ app.get('/students', async (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log('server running');
-});
+app.listen(PORT);
 
 module.exports = app;
