@@ -7,10 +7,6 @@ app.get('/', (req, res) => {
   res.send('Hello Holberton School!');
 });
 
-app.get('/students', (req, res) => {
-  res.send('Hello students');
-});
-
 app.listen(PORT, () => {
   console.log('server running');
 });
