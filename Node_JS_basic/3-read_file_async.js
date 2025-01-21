@@ -8,9 +8,12 @@ function countStudents(path) {
         return;
       }
 
+      const response = [];
       let students = data.split('\n').filter((element) => element);
       students = students.slice(1);
-      console.log(`Number of students: ${students.length}`);
+      const msg = `Number of students: ${students.length}`;
+      console.log(msg);
+      response.push(msg);
 
       const dict = {};
       students.forEach((element) => {
@@ -25,11 +28,13 @@ function countStudents(path) {
 
       for (const key in dict) {
         if (key) {
-          console.log(`Number of students in ${key}: ${dict[key].length}. List: ${dict[key].join(', ')}`);
+          const message = `Number of students in ${key}: ${dict[key].length}. List: ${dict[key].join(', ')}`;
+          console.log(message);
+          response.push(message);
         }
       }
 
-      resolve();
+      resolve(response);
     });
   });
 }
