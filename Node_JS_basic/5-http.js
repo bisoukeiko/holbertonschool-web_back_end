@@ -14,9 +14,7 @@ const app = http.createServer(async (request, response) => {
   if (request.url === '/') {
     response.write('Hello Holberton School!');
     response.end();
-  }
-
-  if (request.url === '/students') {
+  } else if (request.url === '/students') {
     response.write('This is the list of our students\n');
 
     try {
@@ -25,10 +23,10 @@ const app = http.createServer(async (request, response) => {
     } catch (error) {
       response.end(error.message);
     }
+  } else {
+    response.statusCode = 404;
+    response.end('Not Found\n');
   }
-
-  response.statusCode = 404;
-  response.end('Not Found\n');
 });
 
 app.listen(port);
