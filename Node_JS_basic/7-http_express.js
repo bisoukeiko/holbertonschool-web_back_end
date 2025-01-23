@@ -18,7 +18,7 @@ app.get('/students', (req, res) => {
   countStudents(databaseFile)
     .then((studentslist) => {
       res.send(200, `This is the list of our students\n${studentslist.join('\n')}`);
-    }).catch((err) => {
+    }).catch(() => {
       res.send(500, 'Cannot load the database');
     });
 });
