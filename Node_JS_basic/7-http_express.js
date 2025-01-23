@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/students', (req, res) => {
-  const databaseFile = process.argv[2]; // ファイルパスは引数から取得
+  const databaseFile = process.argv[2];
   if (!databaseFile) {
     res.status(500).send('Database file path is missing');
     return;
@@ -19,7 +19,7 @@ app.get('/students', (req, res) => {
     .then((studentslist) => {
       res.send(200, `This is the list of our students\n${studentslist.join('\n')}`);
     }).catch((err) => {
-      res.send(500, err.message);
+      res.send(500, 'Cannot load the database');
     });
 });
 
